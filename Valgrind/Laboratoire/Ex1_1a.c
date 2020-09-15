@@ -20,9 +20,9 @@ int heapOverflow(void)
 {
 
 	char* caractere = (char*) malloc(1);
-	caractere[0] = 'A'; // heap Overflow
+	caractere[1] = 'A'; // heap Overflow
 
-	//free(caractere);
+	free(caractere);
 	caractere = NULL;
 
 	 return 0;
