@@ -1,0 +1,333 @@
+desc: --time-unit=B
+cmd: ./exe2
+time_unit: B
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=24
+mem_heap_B=16
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=64
+mem_heap_B=48
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=88
+mem_heap_B=52
+mem_heap_extra_B=36
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=112
+mem_heap_B=56
+mem_heap_extra_B=56
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=136
+mem_heap_B=60
+mem_heap_extra_B=76
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=160
+mem_heap_B=64
+mem_heap_extra_B=96
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=184
+mem_heap_B=68
+mem_heap_extra_B=116
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=240
+mem_heap_B=108
+mem_heap_extra_B=132
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=264
+mem_heap_B=112
+mem_heap_extra_B=152
+mem_stacks_B=0
+heap_tree=detailed
+n4: 112 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 40 0x401473: ResizeArray (exe2.c:132)
+  n1: 40 0x401355: VectorSet (exe2.c:104)
+   n0: 40 0x4011C8: main (exe2.c:59)
+ n1: 32 0x40121B: VectorCreate (exe2.c:74)
+  n0: 32 0x40117E: main (exe2.c:49)
+ n0: 24 0x4011A3: main (exe2.c:55)
+ n1: 16 0x401207: VectorCreate (exe2.c:73)
+  n0: 16 0x40117E: main (exe2.c:49)
+#-----------
+snapshot=10
+#-----------
+time=320
+mem_heap_B=160
+mem_heap_extra_B=160
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=344
+mem_heap_B=164
+mem_heap_extra_B=180
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=416
+mem_heap_B=220
+mem_heap_extra_B=196
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=440
+mem_heap_B=224
+mem_heap_extra_B=216
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=512
+mem_heap_B=288
+mem_heap_extra_B=224
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=536
+mem_heap_B=292
+mem_heap_extra_B=244
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=624
+mem_heap_B=364
+mem_heap_extra_B=260
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=648
+mem_heap_B=368
+mem_heap_extra_B=280
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=736
+mem_heap_B=448
+mem_heap_extra_B=288
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=1768
+mem_heap_B=1472
+mem_heap_extra_B=296
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1472 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x48CDF53: _IO_file_doallocate (in /usr/lib64/libc-2.31.so)
+  n1: 1024 0x48DCCAF: _IO_doallocbuf (in /usr/lib64/libc-2.31.so)
+   n1: 1024 0x48DBE47: _IO_file_overflow@@GLIBC_2.2.5 (in /usr/lib64/libc-2.31.so)
+    n1: 1024 0x48DAEF5: _IO_file_xsputn@@GLIBC_2.2.5 (in /usr/lib64/libc-2.31.so)
+     n1: 1024 0x48C36BF: __vfprintf_internal (in /usr/lib64/libc-2.31.so)
+      n1: 1024 0x48B040E: printf (in /usr/lib64/libc-2.31.so)
+       n1: 1024 0x401562: PrintIntVector (exe2.c:157)
+        n0: 1024 0x4011DE: main (exe2.c:63)
+ n1: 360 0x401473: ResizeArray (exe2.c:132)
+  n1: 360 0x401355: VectorSet (exe2.c:104)
+   n0: 360 0x4011C8: main (exe2.c:59)
+ n0: 40 0x4011A3: main (exe2.c:55)
+ n1: 32 0x40121B: VectorCreate (exe2.c:74)
+  n0: 32 0x40117E: main (exe2.c:49)
+ n0: 16 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=20
+#-----------
+time=1768
+mem_heap_B=1472
+mem_heap_extra_B=296
+mem_stacks_B=0
+heap_tree=peak
+n5: 1472 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x48CDF53: _IO_file_doallocate (in /usr/lib64/libc-2.31.so)
+  n1: 1024 0x48DCCAF: _IO_doallocbuf (in /usr/lib64/libc-2.31.so)
+   n1: 1024 0x48DBE47: _IO_file_overflow@@GLIBC_2.2.5 (in /usr/lib64/libc-2.31.so)
+    n1: 1024 0x48DAEF5: _IO_file_xsputn@@GLIBC_2.2.5 (in /usr/lib64/libc-2.31.so)
+     n1: 1024 0x48C36BF: __vfprintf_internal (in /usr/lib64/libc-2.31.so)
+      n1: 1024 0x48B040E: printf (in /usr/lib64/libc-2.31.so)
+       n1: 1024 0x401562: PrintIntVector (exe2.c:157)
+        n0: 1024 0x4011DE: main (exe2.c:63)
+ n1: 360 0x401473: ResizeArray (exe2.c:132)
+  n1: 360 0x401355: VectorSet (exe2.c:104)
+   n0: 360 0x4011C8: main (exe2.c:59)
+ n0: 40 0x4011A3: main (exe2.c:55)
+ n1: 32 0x40121B: VectorCreate (exe2.c:74)
+  n0: 32 0x40117E: main (exe2.c:49)
+ n0: 16 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=21
+#-----------
+time=1792
+mem_heap_B=1468
+mem_heap_extra_B=276
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=1816
+mem_heap_B=1464
+mem_heap_extra_B=256
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=1840
+mem_heap_B=1460
+mem_heap_extra_B=236
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=1864
+mem_heap_B=1456
+mem_heap_extra_B=216
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=1888
+mem_heap_B=1452
+mem_heap_extra_B=196
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=1912
+mem_heap_B=1448
+mem_heap_extra_B=176
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=1936
+mem_heap_B=1444
+mem_heap_extra_B=156
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=1960
+mem_heap_B=1440
+mem_heap_extra_B=136
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=1984
+mem_heap_B=1436
+mem_heap_extra_B=116
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=2008
+mem_heap_B=1432
+mem_heap_extra_B=96
+mem_stacks_B=0
+heap_tree=detailed
+n5: 1432 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x48CDF53: _IO_file_doallocate (in /usr/lib64/libc-2.31.so)
+  n1: 1024 0x48DCCAF: _IO_doallocbuf (in /usr/lib64/libc-2.31.so)
+   n1: 1024 0x48DBE47: _IO_file_overflow@@GLIBC_2.2.5 (in /usr/lib64/libc-2.31.so)
+    n1: 1024 0x48DAEF5: _IO_file_xsputn@@GLIBC_2.2.5 (in /usr/lib64/libc-2.31.so)
+     n1: 1024 0x48C36BF: __vfprintf_internal (in /usr/lib64/libc-2.31.so)
+      n1: 1024 0x48B040E: printf (in /usr/lib64/libc-2.31.so)
+       n1: 1024 0x401562: PrintIntVector (exe2.c:157)
+        n0: 1024 0x4011DE: main (exe2.c:63)
+ n1: 360 0x401473: ResizeArray (exe2.c:132)
+  n1: 360 0x401355: VectorSet (exe2.c:104)
+   n0: 360 0x4011C8: main (exe2.c:59)
+ n1: 32 0x40121B: VectorCreate (exe2.c:74)
+  n0: 32 0x40117E: main (exe2.c:49)
+ n1: 16 0x401207: VectorCreate (exe2.c:73)
+  n0: 16 0x40117E: main (exe2.c:49)
+ n0: 0 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=31
+#-----------
+time=2096
+mem_heap_B=1352
+mem_heap_extra_B=88
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=2120
+mem_heap_B=1336
+mem_heap_extra_B=80
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=3152
+mem_heap_B=312
+mem_heap_extra_B=72
+mem_stacks_B=0
+heap_tree=empty
