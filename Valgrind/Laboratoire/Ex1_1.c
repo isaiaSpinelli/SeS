@@ -1,7 +1,6 @@
 // Spinelli Isaia
-
 //gcc -Wall -g -o Ex1_1 Ex1_1.c
-
+// valgrind --tool=memcheck ./Ex1_1
 
 #include "stdio.h"
 #include "stdlib.h"

@@ -1,5 +1,4 @@
 // Spinelli Isaia
-
 // gcc -Wall -g -o Ex1_2 Ex1_2.c
 // valgrind --leak-check=full ./Ex1_2
 
