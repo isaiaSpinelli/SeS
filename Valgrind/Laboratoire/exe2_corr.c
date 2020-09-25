@@ -1,4 +1,4 @@
-//gcc -Wall -g -o exe2 exe2.2
+//gcc -Wall -g -o exe2 exe2.c
 
 #include "assert.h"
 #include "stdbool.h"
@@ -53,14 +53,17 @@ int main(int argc, char *argv[]) {
 
   for (i = 0; i < N; ++i) { // Place some elements in the vector.
     int *x = (int*)malloc(sizeof(int));
+    // modif 2
+    *x = 0;
     element_t old;
     VectorSet(v, i, x, &old);
+    
   }
 
   PrintIntVector(v);
 
-
-  
+  // modif 3
+  VectorFree(v);
 
   return EXIT_SUCCESS;
 }
@@ -69,6 +72,8 @@ int main(int argc, char *argv[]) {
 vector_t VectorCreate(size_t n) {
   vector_t v = (vector_t)malloc(sizeof(struct vector_t));
   v->arry = (element_t*)malloc(n*sizeof(element_t));
+  // modif 1
+  v->length = n;
   if (v == NULL || v->arry == NULL)
     return NULL;
 
@@ -77,12 +82,22 @@ vector_t VectorCreate(size_t n) {
 
 void VectorFree(vector_t v) {
   assert(v != NULL);
+  
+  // modif 5
+  for (int i = 0; i < VectorLength(v); ++i)
+      free(v->arry[i]);
+  
+  // modif 4    
+  free(v->arry);
   free(v);
 }
 
 bool VectorSet(vector_t v, uint32_t index, element_t e, element_t *prev) {
   assert(v != NULL);
-
+  
+	 // ajout
+	 //printf("length = %ld - %ld", v->length, VectorLength(v));
+	 
   if (index >= v->length) {
     size_t newLength = index+1;
 
@@ -126,7 +141,10 @@ static element_t *ResizeArray(element_t *arry, size_t oldLen, size_t newLen) {
   // Null initialize rest of new array.
   for (i = copyLen; i < newLen; ++i)
     newArry[i] = NULL;
-
+    
+    
+  // modif 6
+  free(arry);
   return newArry;
 }
 
