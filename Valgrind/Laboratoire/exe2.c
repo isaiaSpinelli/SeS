@@ -53,13 +53,14 @@ int main(int argc, char *argv[]) {
 
   for (i = 0; i < N; ++i) { // Place some elements in the vector.
     int *x = (int*)malloc(sizeof(int));
+    *x = 0;
     element_t old;
     VectorSet(v, i, x, &old);
   }
 
   PrintIntVector(v);
-
-
+  
+  VectorFree(v);
   
 
   return EXIT_SUCCESS;
@@ -69,6 +70,7 @@ int main(int argc, char *argv[]) {
 vector_t VectorCreate(size_t n) {
   vector_t v = (vector_t)malloc(sizeof(struct vector_t));
   v->arry = (element_t*)malloc(n*sizeof(element_t));
+  v->length = n;
   if (v == NULL || v->arry == NULL)
     return NULL;
 
@@ -77,6 +79,11 @@ vector_t VectorCreate(size_t n) {
 
 void VectorFree(vector_t v) {
   assert(v != NULL);
+  
+  for (int i = 0; i < VectorLength(v); ++i)
+      free(v->arry[i]);
+  
+  free(v->arry);
   free(v);
 }
 
@@ -126,7 +133,8 @@ static element_t *ResizeArray(element_t *arry, size_t oldLen, size_t newLen) {
   // Null initialize rest of new array.
   for (i = copyLen; i < newLen; ++i)
     newArry[i] = NULL;
-
+    
+  free(arry);
   return newArry;
 }
 
