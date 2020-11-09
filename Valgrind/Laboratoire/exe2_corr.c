@@ -1,4 +1,6 @@
 //gcc -Wall -g -o exe2 exe2.c
+// Spinelli Isaia
+// Exercice 2 corrigé (Labo Valgrind)
 
 #include "assert.h"
 #include "stdbool.h"
