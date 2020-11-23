@@ -5,7 +5,7 @@ cd $HOME
 mkdir $ROOTFSLOC
 
 echo "Create dirs"
-mkdir -p $ROOTFSLOC/{bin,dev,etc,home,lib,lib64,newroot,proc,root,sbin,sys}
+mkdir -p $ROOTFSLOC/{bin,dev,etc,home,lib,lib64,newroot,proc,root,sbin,sys,run} # add run for cryptsetup 
 
 echo "Create devices"
 cd $ROOTFSLOC/dev
@@ -43,7 +43,8 @@ echo "build /sbin"
 
 cd ../sbin
 ln -s ../bin/busybox switch_root
-
+#cryptsetup
+cp ~/workspace/nano/buildroot/output/target/usr/sbin/cryptsetup .
 
 echo "build /lib64"
 
@@ -55,11 +56,37 @@ ln -s libresolv-2.30.so libresolv.so.2
 ln -s libc-2.30.so libc.so.6
 ln -s ../lib64/ld-2.30.so ld-linux-aarch64.so.1
 
+# cryptsetup
+cp ~/workspace/nano/buildroot/output/target/lib/libm.so.6 .
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libcryptsetup.so.12 .
+
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libpopt.so.0 .
+cp ~/workspace/nano/buildroot/output/target/lib/libuuid.so.1 .
+cp ~/workspace/nano/buildroot/output/target/lib/libblkid.so.1 .
+cp ~/workspace/nano/buildroot/output/target/lib/libpthread.so.0 .
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libdevmapper.so.1.02 .
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libssl.so.1.1 .
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libcrypto.so.1.1 .
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libjson-c.so.4 .
+cp ~/workspace/nano/buildroot/output/target/lib/libdl.so.2 .
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libatomic.so.1 .
+
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libargon2.so.1 .
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libdw.so.1 .
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libgcc_s.so.1 .
+cp ~/workspace/nano/buildroot/output/target/lib/librt.so.1 .
+
+# strace 
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libelf.so.1 .
+cp ~/workspace/nano/buildroot/output/target/usr/lib/libz.so.1 .
+
 echo "build /lib"
 
 cd ../lib
 cp ~/workspace/nano/buildroot/output/target/lib64/ld-2.30.so .
 ln -s ../lib64/ld-2.30.so ld-linux-aarch64.so.1
+
+
 
 echo "build inti script"
 
@@ -70,11 +97,26 @@ mount -t proc none /proc
 mount -t sysfs none /sys
 mount -t ext4 /dev/mmcblk0p2 /newroot
 mount -n -t devtmpfs devtmpfs /newroot/dev
-#exec sh
-exec switch_root /newroot /sbin/init
+
+# monte et switch sur la partition root LUKS
+cryptsetup --debug --key-size 512 --key-file /home/file_passphare open --type luks /dev/mmcblk0p3 usr_luks
+mkdir  /newroot_luks
+mount /dev/mapper/usr_luks /newroot_luks
+exec switch_root /newroot_luks /sbin/init
+
+# au cas ou il y a une erreur, ouvre un shell
+exec sh
+#exec switch_root /newroot /sbin/init
+
 endofinput
 ######
 chmod 755 init
+
+# add file with passphare for root partition LUKS
+echo "Copie File passphare"
+
+cd ./home
+cp /home/lmi/workspace/SeS/file_passphare .
 
 echo "change owner"
 

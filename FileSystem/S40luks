@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "Test initial script auto mount LUKS "
+
+cryptsetup --debug --key-size 512 --key-file ./file_passphare open --type luks /dev/mmcblk0p3 usr_luks
+
+echo "create /mnt/usrfs"
+mkdir /mnt/usrfs
+
+echo "mount usr_luks to mnt/usrfs"
+mount /dev/mapper/usr_luks /mnt/usrfs
+

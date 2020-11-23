@@ -1,0 +1,13 @@
+#!/bin/busybox sh
+# Init script in the initRamFS
+echo "mount fs "
+mount -t proc none /proc
+mount -t sysfs none /sys
+
+mount -t ext4 /dev/mmcblk0p2 /newroot
+
+echo "mount devfs"
+mount -n -t devtmpfs devtmpfs /newroot/dev
+
+exec sh
+# exec switch_root /newroot /sbin/init
